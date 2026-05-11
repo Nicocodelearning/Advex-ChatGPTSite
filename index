@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ADVEX | Site one-page</title>
+  <meta name="description" content="ADVEX — site one-page moderne et sérieux." />
+
+  <style>
+    :root {
+      --grey: #353535;
+      --grey-2: #4a4a4a;
+      --yellow: #f8b400;
+      --yellow-2: #fab003;
+      --bg: #f6f3ec;
+      --paper: #ffffff;
+      --ink: #202020;
+      --muted: #6e6e6e;
+      --line: rgba(53, 53, 53, 0.12);
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.12);
+      --radius: 28px;
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 78% 8%, rgba(248, 180, 0, 0.26), transparent 28rem),
+        radial-gradient(circle at 8% 35%, rgba(53, 53, 53, 0.10), transparent 22rem),
+        var(--bg);
+      line-height: 1.55;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: fixed;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(var(--max), calc(100% - 32px));
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 14px 18px 14px 22px;
+      border: 1px solid rgba(255, 255, 255, 0.72);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 14px 44px rgba(0, 0, 0, 0.08);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      width: 170px;
+      min-width: 140px;
+    }
+
+    .logo svg {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      color: #575757;
+      font-size: 14px;
+      font-weight: 650;
+    }
+
+    .nav a {
+      padding: 10px 13px;
+      border-radius: 999px;
+      transition: 0.22s ease;
+    }
+
+    .nav a:hover {
+      color: var(--grey);
+      background: rgba(53, 53, 53, 0.07);
+    }
+
+    .header-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 18px;
+      border-radius: 999px;
+      background: var(--grey);
+      color: #fff;
+      font-weight: 800;
+      font-size: 14px;
+      box-shadow: 0 12px 34px rgba(53, 53, 53, 0.22);
+      transition: 0.22s ease;
+    }
+
+    .header-cta:hover {
+      transform: translateY(-2px);
+      background: #242424;
+    }
+
+    .menu-btn {
+      display: none;
+      border: 0;
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      background: var(--grey);
+      color: #fff;
+      font-size: 21px;
+      cursor: pointer;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: grid;
+      align-items: center;
+      padding: 155px 0 90px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 58px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 25px;
+      padding: 9px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.66);
+      color: var(--grey);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: var(--yellow);
+      box-shadow: 0 0 0 6px rgba(248, 180, 0, 0.17);
+    }
+
+    h1 {
+      max-width: 790px;
+      margin-bottom: 26px;
+      color: var(--grey);
+      font-size: clamp(48px, 7.6vw, 94px);
+      line-height: 0.9;
+      letter-spacing: -0.075em;
+      text-wrap: balance;
+    }
+
+    h1 span {
+      color: var(--yellow);
+    }
+
+    .lead {
+      max-width: 650px;
+      margin-bottom: 34px;
+      color: #565656;
+      font-size: clamp(18px, 2vw, 22px);
+      line-height: 1.55;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 54px;
+      padding: 0 23px;
+      border-radius: 999px;
+      font-weight: 850;
+      transition: 0.22s ease;
+    }
+
+    .btn-primary {
+      background: var(--grey);
+      color: #fff;
+      box-shadow: 0 18px 48px rgba(53, 53, 53, 0.28);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      background: #252525;
+    }
+
+    .btn-secondary {
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.66);
+      color: var(--grey);
+    }
+
+    .btn-secondary:hover {
+      transform: translateY(-2px);
+      background: #fff;
+    }
+
+    .hero-panel {
+      position: relative;
+      padding: 28px;
+      border: 1px solid rgba(255, 255, 255, 0.78);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(18px);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .hero-panel::after {
+      content: "";
+      position: absolute;
+      right: -70px;
+      top: -70px;
+      width: 210px;
+      height: 210px;
+      border-radius: 50%;
+      background: rgba(248, 180, 0, 0.34);
+    }
+
+    .panel-logo {
+      position: relative;
+      z-index: 1;
+      width: 235px;
+      margin-bottom: 44px;
+    }
+
+    .panel-logo svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .panel-list {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 14px;
+    }
+
+    .panel-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 18px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .panel-item strong {
+      color: var(--grey);
+      font-size: 18px;
+    }
+
+    .panel-item span {
+      max-width: 260px;
+      color: var(--muted);
+      text-align: right;
+      font-size: 14px;
+    }
+
+    section {
+      padding: 104px 0;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 36px;
+      margin-bottom: 40px;
+    }
+
+    .section-kicker {
+      margin-bottom: 12px;
+      color: var(--yellow);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      max-width: 760px;
+      color: var(--grey);
+      font-size: clamp(34px, 5vw, 62px);
+      line-height: 0.98;
+      letter-spacing: -0.06em;
+      text-wrap: balance;
+    }
+
+    .section-head p {
+      max-width: 410px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      min-height: 310px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 25px;
+      background: rgba(255, 255, 255, 0.78);
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.04);
+      transition: 0.24s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      background: #fff;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.11);
+    }
+
+    .icon {
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 24px;
+      border-radius: 17px;
+      background: var(--grey);
+      color: var(--yellow);
+      font-weight: 950;
+      font-size: 20px;
+    }
+
+    .card h3 {
+      margin-bottom: 12px;
+      color: var(--grey);
+      font-size: 23px;
+      line-height: 1.08;
+      letter-spacing: -0.035em;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .card small {
+      display: block;
+      margin-top: 28px;
+      color: var(--grey);
+      font-size: 13px;
+      font-weight: 850;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .dark {
+      position: relative;
+      color: #fff;
+      background: var(--grey);
+      overflow: hidden;
+    }
+
+    .dark::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 86% 10%, rgba(248, 180, 0, 0.25), transparent 30rem),
+        linear-gradient(120deg, rgba(255, 255, 255, 0.06), transparent);
+      pointer-events: none;
+    }
+
+    .dark .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .dark h2,
+    .dark .card h3 {
+      color: #fff;
+    }
+
+    .dark .section-head p,
+    .dark .card p {
+      color: rgba(255, 255, 255, 0.68);
+    }
+
+    .dark .card {
+      border-color: rgba(255, 255, 255, 0.14);
+      background: rgba(255, 255, 255, 0.055);
+      box-shadow: none;
+    }
+
+    .dark .card:hover {
+      background: rgba(255, 255, 255, 0.09);
+    }
+
+    .dark .card small {
+      color: var(--yellow);
+    }
+
+    .references {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 20px;
+      align-items: stretch;
+    }
+
+    .reference-feature {
+      min-height: 420px;
+      padding: 32px;
+      border-radius: var(--radius);
+      background: var(--grey);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .reference-feature::after {
+      content: "";
+      position: absolute;
+      right: -90px;
+      bottom: -90px;
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      background: var(--yellow);
+      opacity: 0.72;
+    }
+
+    .reference-feature h3 {
+      position: relative;
+      z-index: 1;
+      max-width: 360px;
+      font-size: 36px;
+      line-height: 1.03;
+      letter-spacing: -0.045em;
+    }
+
+    .reference-feature p {
+      position: relative;
+      z-index: 1;
+      max-width: 420px;
+      color: rgba(255, 255, 255, 0.72);
+    }
+
+    .reference-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .reference-row {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 18px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.76);
+    }
+
+    .reference-row strong {
+      color: var(--grey);
+    }
+
+    .reference-row p {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px;
+    }
+
+    .trust-logo {
+      min-height: 112px;
+      display: grid;
+      place-items: center;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.78);
+      color: #777;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: 0.22s ease;
+    }
+
+    .trust-logo:hover {
+      transform: translateY(-4px);
+      color: var(--grey);
+      background: #fff;
+      box-shadow: 0 18px 44px rgba(0, 0, 0, 0.08);
+    }
+
+    .career-contact {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .big-box {
+      padding: 34px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.78);
+      box-shadow: 0 18px 55px rgba(0, 0, 0, 0.07);
+    }
+
+    .big-box h3 {
+      margin-bottom: 16px;
+      color: var(--grey);
+      font-size: 32px;
+      line-height: 1.06;
+      letter-spacing: -0.045em;
+    }
+
+    .big-box p {
+      margin-bottom: 26px;
+      color: var(--muted);
+    }
+
+    .field-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .input {
+      width: 100%;
+      min-height: 50px;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      background: #fff;
+      padding: 0 15px;
+      color: var(--grey);
+      font: inherit;
+      outline: none;
+    }
+
+    textarea.input {
+      grid-column: 1 / -1;
+      min-height: 120px;
+      padding-top: 14px;
+      resize: vertical;
+    }
+
+    .form-note {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer {
+      padding: 34px 0 42px;
+      color: var(--muted);
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+      font-size: 14px;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .references,
+      .career-contact {
+        grid-template-columns: 1fr;
+      }
+
+      .cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .trust-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .section-head {
+        display: block;
+      }
+
+      .section-head p {
+        margin-top: 18px;
+      }
+
+      .nav,
+      .header-cta {
+        display: none;
+      }
+
+      .menu-btn {
+        display: inline-grid;
+        place-items: center;
+      }
+
+      .site-header.open {
+        border-radius: 28px;
+        align-items: flex-start;
+      }
+
+      .site-header.open .mobile-nav {
+        display: grid;
+      }
+
+      .mobile-nav {
+        display: none;
+        position: absolute;
+        left: 14px;
+        right: 14px;
+        top: 76px;
+        gap: 6px;
+        padding: 12px;
+        border-radius: 22px;
+        background: rgba(255, 255, 255, 0.96);
+        box-shadow: 0 18px 46px rgba(0, 0, 0, 0.10);
+      }
+
+      .mobile-nav a {
+        padding: 13px 14px;
+        border-radius: 16px;
+        font-weight: 800;
+        color: var(--grey);
+      }
+
+      .mobile-nav a:hover {
+        background: rgba(53, 53, 53, 0.07);
+      }
+    }
+
+    @media (min-width: 981px) {
+      .mobile-nav {
+        display: none !important;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .container {
+        width: min(100% - 28px, var(--max));
+      }
+
+      .site-header {
+        top: 10px;
+        width: calc(100% - 20px);
+        padding: 12px 12px 12px 16px;
+      }
+
+      .logo {
+        width: 138px;
+      }
+
+      .hero {
+        padding-top: 125px;
+      }
+
+      h1 {
+        font-size: clamp(43px, 15vw, 68px);
+      }
+
+      section {
+        padding: 74px 0;
+      }
+
+      .cards,
+      .trust-grid,
+      .field-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .panel-item,
+      .reference-row {
+        grid-template-columns: 1fr;
+      }
+
+      .panel-item span {
+        text-align: left;
+      }
+
+      .footer-inner {
+        display: block;
+      }
+
+      .footer-inner span {
+        display: block;
+        margin-bottom: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header" id="siteHeader">
+    <a href="#top" class="logo" aria-label="ADVEX accueil">
+      <svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="295.84 456.78 404.86 85.44"
+     role="img"
+     aria-label="Logo ADVEX">
+
+    <path fill="#353535"
+          d="M384.88,456.78h24.29c10.72,0,19.58,2.11,26.58,6.34
+             c7,4.22,12.11,9.66,15.31,16.31c3.21,6.65,4.81,13.73,4.81,21.24
+             c0,8.29-1.94,15.59-5.81,21.89c-3.87,6.3-9.06,11.15-15.55,14.55
+             c-6.49,3.4-13.57,5.1-21.24,5.1h-28.4V456.78z 
+             M410.81,529.07c6.1,0,11.48-1.13,16.14-3.4c4.65-2.27,8.29-5.61,10.91-10.03
+             c2.62-4.42,3.93-9.72,3.93-15.9c0-6.73-1.43-12.34-4.28-16.84
+             c-2.86-4.5-6.5-7.8-10.91-9.92c-4.42-2.11-8.98-3.17-13.67-3.17
+             h-14.32v59.26H410.81z"/>
+
+    <!-- V (élément accent – couleur modifiable) -->
+    <path fill="#F8B400"
+          d="M537.91,456.78l-38.26,85.43l-38.26-85.43h16.31
+             l22.53,53.59l21.59-53.59H537.91z"/>
+
+    <path fill="#353535"
+          d="M295.84,542.22l38.26-85.43l38.26,85.43h-16.31
+             l-22.53-53.59l-21.59,53.59H295.84z"/>
+
+    <path fill="#353535"
+          d="M567,529.07v-23.24h38.26v-13.14h-51.99v49.52h58.33v-13.14H567z 
+             M611.6,469.92v-13.14h-58.33v13.14H611.6z"/>
+
+    <path fill="#353535"
+          d="M684.75,542.22l-21.01-32.27l-18.78,32.27h-16.9
+             l28.05-44.01l-26.87-41.42h17.37
+             l20.07,30.86l18.07-30.86h16.55
+             l-27.11,42.25l28.16,43.18H684.75z"/>
+</svg>
+    </a>
+
+    <nav class="nav" aria-label="Navigation principale">
+      <a href="#services">Services</a>
+      <a href="#references">Références</a>
+      <a href="#confiance">Ils nous font confiance</a>
+      <a href="#contact">Contact</a>
+      <a href="#carriere">Carrière</a>
+    </nav>
+
+    <a class="header-cta" href="#contact">Nous contacter</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Ouvrir le menu">☰</button>
+
+    <nav class="mobile-nav" aria-label="Navigation mobile">
+      <a href="#services">Services</a>
+      <a href="#references">Références</a>
+      <a href="#confiance">Ils nous font confiance</a>
+      <a href="#contact">Contact</a>
+      <a href="#carriere">Carrière</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="reveal">
+          <div class="eyebrow">Bureau d’expertise & accompagnement chantier</div>
+          <h1>Un site sérieux, moderne et <span>clair.</span></h1>
+          <p class="lead">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae magna
+            non risus gravida facilisis. Donec sed arcu vitae sem posuere posuere.
+          </p>
+          <div class="actions">
+            <a class="btn btn-primary" href="#contact">Demander une offre</a>
+            <a class="btn btn-secondary" href="#services">Découvrir les services</a>
+          </div>
+        </div>
+
+        <aside class="hero-panel reveal">
+          <div class="panel-logo">
+            <svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="295.84 456.78 404.86 85.44"
+     role="img"
+     aria-label="Logo ADVEX">
+
+    <path fill="#353535"
+          d="M384.88,456.78h24.29c10.72,0,19.58,2.11,26.58,6.34
+             c7,4.22,12.11,9.66,15.31,16.31c3.21,6.65,4.81,13.73,4.81,21.24
+             c0,8.29-1.94,15.59-5.81,21.89c-3.87,6.3-9.06,11.15-15.55,14.55
+             c-6.49,3.4-13.57,5.1-21.24,5.1h-28.4V456.78z 
+             M410.81,529.07c6.1,0,11.48-1.13,16.14-3.4c4.65-2.27,8.29-5.61,10.91-10.03
+             c2.62-4.42,3.93-9.72,3.93-15.9c0-6.73-1.43-12.34-4.28-16.84
+             c-2.86-4.5-6.5-7.8-10.91-9.92c-4.42-2.11-8.98-3.17-13.67-3.17
+             h-14.32v59.26H410.81z"/>
+
+    <!-- V (élément accent – couleur modifiable) -->
+    <path fill="#F8B400"
+          d="M537.91,456.78l-38.26,85.43l-38.26-85.43h16.31
+             l22.53,53.59l21.59-53.59H537.91z"/>
+
+    <path fill="#353535"
+          d="M295.84,542.22l38.26-85.43l38.26,85.43h-16.31
+             l-22.53-53.59l-21.59,53.59H295.84z"/>
+
+    <path fill="#353535"
+          d="M567,529.07v-23.24h38.26v-13.14h-51.99v49.52h58.33v-13.14H567z 
+             M611.6,469.92v-13.14h-58.33v13.14H611.6z"/>
+
+    <path fill="#353535"
+          d="M684.75,542.22l-21.01-32.27l-18.78,32.27h-16.9
+             l28.05-44.01l-26.87-41.42h17.37
+             l20.07,30.86l18.07-30.86h16.55
+             l-27.11,42.25l28.16,43.18H684.75z"/>
+</svg>
+          </div>
+          <div class="panel-list">
+            <div class="panel-item">
+              <strong>Expertise</strong>
+              <span>Lorem ipsum dolor sit amet consectetur.</span>
+            </div>
+            <div class="panel-item">
+              <strong>Rigueur</strong>
+              <span>Praesent commodo cursus magna vel scelerisque.</span>
+            </div>
+            <div class="panel-item">
+              <strong>Terrain</strong>
+              <span>Maecenas faucibus mollis interdum.</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-kicker">Services</div>
+            <h2>Des expertises structurées pour accompagner vos projets.</h2>
+          </div>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed posuere consectetur est at lobortis.</p>
+        </div>
+
+        <div class="cards">
+          <article class="card reveal">
+            <div>
+              <div class="icon">01</div>
+              <h3>Lorem ipsum</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper nulla non metus auctor.</p>
+            </div>
+            <small>Service</small>
+          </article>
+
+          <article class="card reveal">
+            <div>
+              <div class="icon">02</div>
+              <h3>Dolor sit amet</h3>
+              <p>Curabitur blandit tempus porttitor. Integer posuere erat a ante venenatis dapibus.</p>
+            </div>
+            <small>Service</small>
+          </article>
+
+          <article class="card reveal">
+            <div>
+              <div class="icon">03</div>
+              <h3>Consectetur</h3>
+              <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean eu leo quam.</p>
+            </div>
+            <small>Service</small>
+          </article>
+
+          <article class="card reveal">
+            <div>
+              <div class="icon">04</div>
+              <h3>Adipiscing elit</h3>
+              <p>Etiam porta sem malesuada magna mollis euismod. Vestibulum id ligula porta felis.</p>
+            </div>
+            <small>Service</small>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="references" class="dark">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-kicker">Références</div>
+            <h2>Des références présentées avec sobriété et crédibilité.</h2>
+          </div>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id dolor id nibh ultricies vehicula.</p>
+        </div>
+
+        <div class="references">
+          <div class="reference-feature reveal">
+            <h3>Lorem ipsum dolor sit amet consectetur.</h3>
+            <p>
+              Cras mattis consectetur purus sit amet fermentum. Praesent commodo cursus magna,
+              vel scelerisque nisl consectetur et.
+            </p>
+          </div>
+
+          <div class="reference-list">
+            <div class="reference-row reveal">
+              <strong>Référence 01</strong>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sagittis lacus vel augue.</p>
+            </div>
+            <div class="reference-row reveal">
+              <strong>Référence 02</strong>
+              <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+            </div>
+            <div class="reference-row reveal">
+              <strong>Référence 03</strong>
+              <p>Donec id elit non mi porta gravida at eget metus. Aenean lacinia bibendum nulla.</p>
+            </div>
+            <div class="reference-row reveal">
+              <strong>Référence 04</strong>
+              <p>Vestibulum id ligula porta felis euismod semper. Fusce dapibus tellus ac cursus commodo.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="confiance">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-kicker">Ils nous font confiance</div>
+            <h2>Une grille sobre pour mettre en avant les partenaires.</h2>
+          </div>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis.</p>
+        </div>
+
+        <div class="trust-grid">
+          <div class="trust-logo reveal">Client 01</div>
+          <div class="trust-logo reveal">Client 02</div>
+          <div class="trust-logo reveal">Client 03</div>
+          <div class="trust-logo reveal">Client 04</div>
+          <div class="trust-logo reveal">Client 05</div>
+          <div class="trust-logo reveal">Client 06</div>
+          <div class="trust-logo reveal">Client 07</div>
+          <div class="trust-logo reveal">Client 08</div>
+          <div class="trust-logo reveal">Client 09</div>
+          <div class="trust-logo reveal">Client 10</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container career-contact">
+        <div class="big-box reveal">
+          <div class="section-kicker">Contact</div>
+          <h3>Parlons de votre projet.</h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed odio dui.
+            Vestibulum id ligula porta felis euismod semper.
+          </p>
+
+          <form onsubmit="event.preventDefault(); showMessage('contactMsg');">
+            <div class="field-grid">
+              <input class="input" type="text" placeholder="Nom" />
+              <input class="input" type="email" placeholder="Email" />
+              <input class="input" type="text" placeholder="Téléphone" />
+              <input class="input" type="text" placeholder="Sujet" />
+              <textarea class="input" placeholder="Message"></textarea>
+            </div>
+            <div style="margin-top: 16px;">
+              <button class="btn btn-primary" type="submit">Envoyer</button>
+            </div>
+            <div class="form-note" id="contactMsg">Lorem ipsum dolor sit amet.</div>
+          </form>
+        </div>
+
+        <div class="big-box reveal">
+          <div class="section-kicker">Informations</div>
+          <h3>Une présence claire et professionnelle.</h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lacinia
+            bibendum nulla sed consectetur. Integer posuere erat a ante.
+          </p>
+          <div class="panel-list">
+            <div class="panel-item">
+              <strong>Email</strong>
+              <span>contact@advex.be</span>
+            </div>
+            <div class="panel-item">
+              <strong>Téléphone</strong>
+              <span>+32 0 00 00 00 00</span>
+            </div>
+            <div class="panel-item">
+              <strong>Adresse</strong>
+              <span>Lorem ipsum, Belgique</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="carriere" class="dark">
+      <div class="container career-contact">
+        <div class="big-box reveal" style="background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.14); box-shadow: none;">
+          <div class="section-kicker">Carrière</div>
+          <h3 style="color: #fff;">Rejoindre une équipe exigeante.</h3>
+          <p style="color: rgba(255,255,255,0.68);">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero,
+            a pharetra augue. Donec ullamcorper nulla non metus auctor fringilla.
+          </p>
+          <a class="btn btn-primary" style="background: var(--yellow); color: var(--grey);" href="#contact">Postuler</a>
+        </div>
+
+        <div class="cards" style="grid-template-columns: 1fr;">
+          <article class="card reveal">
+            <div>
+              <div class="icon">A</div>
+              <h3>Lorem ipsum</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mollis est non commodo luctus.</p>
+            </div>
+            <small>Profil</small>
+          </article>
+          <article class="card reveal">
+            <div>
+              <div class="icon">B</div>
+              <h3>Dolor sit amet</h3>
+              <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
+            </div>
+            <small>Profil</small>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> ADVEX. Lorem ipsum dolor sit amet.</span>
+      <span>Services · Références · Contact · Carrière</span>
+    </div>
+  </footer>
+
+  <script>
+    const header = document.getElementById("siteHeader");
+    const menuBtn = document.getElementById("menuBtn");
+
+    menuBtn.addEventListener("click", () => {
+      header.classList.toggle("open");
+      menuBtn.textContent = header.classList.contains("open") ? "×" : "☰";
+    });
+
+    document.querySelectorAll(".mobile-nav a").forEach((link) => {
+      link.addEventListener("click", () => {
+        header.classList.remove("open");
+        menuBtn.textContent = "☰";
+      });
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+
+    function showMessage(id) {
+      const el = document.getElementById(id);
+      el.textContent = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+    }
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
